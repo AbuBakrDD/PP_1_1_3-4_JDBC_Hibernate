@@ -14,7 +14,7 @@ import java.util.List;
 public class UserDaoJDBCImpl implements UserDao {
 // теперь тесты проходят
     private String sql;
-    Connection connection = Util.getConnection();
+    private final Connection connection = Util.getConnection();
 
     public UserDaoJDBCImpl() {
     }

@@ -1,36 +1,38 @@
 package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
 import java.util.List;
 
 public class Main {
+
+    private static final UserService userService = new UserServiceImpl();
+
     public static void main(String[] args) {
         // реализуйте алгоритм здесь
-        UserServiceImpl user = new UserServiceImpl();
+        userService.createUsersTable();
 
-        user.createUsersTable();
-
-        user.saveUser("Oleg", "Petrov", (byte) 24);
+        userService.saveUser("Oleg", "Petrov", (byte) 24);
         System.out.println("User с именем - Oleg добавлен в базу данных");
-        user.saveUser("Ivan", "Ivanov", (byte) 25);
+        userService.saveUser("Ivan", "Ivanov", (byte) 25);
         System.out.println("User с именем - Ivan добавлен в базу данных");
-        user.saveUser("Igor", "Nikolayiv", (byte) 64);
+        userService.saveUser("Igor", "Nikolayiv", (byte) 64);
         System.out.println("User с именем - Igor добавлен в базу данных");
-        user.saveUser("Rita", "Romanova", (byte) 45);
+        userService.saveUser("Rita", "Romanova", (byte) 45);
         System.out.println("User с именем - Rita добавлен в базу данных");
 
-        user.removeUserById(2);
+        userService.removeUserById(2);
 
-        user.getAllUsers();
-        List<User> users = user.getAllUsers();
+        userService.getAllUsers();
+        List<User> users = userService.getAllUsers();
         System.out.println(users);
 
-        user.cleanUsersTable();
-        List<User> users2 = user.getAllUsers();
+        userService.cleanUsersTable();
+        List<User> users2 = userService.getAllUsers();
         System.out.println(users2);
-        user.dropUsersTable();
+        userService.dropUsersTable();
 
 
 
